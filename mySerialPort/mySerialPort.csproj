@@ -46,14 +46,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="myClass\BDmySQL.cs" />
+    <Compile Include="myClass\BuffDataForm5.cs" />
+    <Compile Include="myClass\UserRegData.cs" />
+    <Compile Include="myForms\Form1ComSet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="myForms\Form1ComSet.Designer.cs" />
+    <Compile Include="myForms\Form2ComSendIn.cs">
+      <SubType>Form</SubType>
     </Compile>
+    <Compile Include="myForms\Form2ComSendIn.Designer.cs" />
+    <Compile Include="myForms\Form3MySqlDATA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myForms\Form3MySqlDATA.Designer.cs" />
+    <Compile Include="myForms\Form4MySQLSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myForms\Form4MySQLSet.Designer.cs" />
+    <Compile Include="myForms\Form5Grafika.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myForms\Form5Grafika.Designer.cs" />
+    <Compile Include="myForms\Form6_DateSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myForms\Form6_DateSet.Designer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="myForms\Form1ComSet.resx" />
+    <EmbeddedResource Include="myForms\Form2ComSendIn.resx" />
+    <EmbeddedResource Include="myForms\Form3MySqlDATA.resx" />
+    <EmbeddedResource Include="myForms\Form4MySQLSet.resx" />
+    <EmbeddedResource Include="myForms\Form5Grafika.resx" />
+    <EmbeddedResource Include="myForms\Form6_DateSet.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,6 +102,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
