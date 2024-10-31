@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
-namespace mySerialPort
+namespace mySerialPort.myForms
 {
     public partial class Form5Grafika : Form
     {
@@ -76,7 +76,7 @@ namespace mySerialPort
             var valMinTime = startDate - (double)timeOffset.Ticks / TimeSpan.TicksPerDay;
             axisX.Minimum = valMinTime;
             axisX.Maximum = startDate;
-            DateTime date =DateTime.FromOADate(valMinTime);
+            DateTime date = DateTime.FromOADate(valMinTime);
 
             label3.Text = date.Year.ToString();
             label4.Text = date.Month + "/" + date.Day;
@@ -95,19 +95,19 @@ namespace mySerialPort
                         axisX.IntervalType = DateTimeIntervalType.Seconds;
                         axisX.Interval = 10;
                         return TimeSpan.FromSeconds(100);
-                     
+
                     case DiapTime.t30c:
                         axisX.IntervalType = DateTimeIntervalType.Seconds;
                         axisX.Interval = 30;
                         return TimeSpan.FromSeconds(300);
-                     
+
                     case DiapTime.t1m:
                         axisX.IntervalType = DateTimeIntervalType.Minutes;
                         axisX.Interval = 1;
                         return TimeSpan.FromMinutes(10);
 
                     case DiapTime.t5m:
-                       axisX.IntervalType = DateTimeIntervalType.Minutes;
+                        axisX.IntervalType = DateTimeIntervalType.Minutes;
                         axisX.Interval = 5;
                         return TimeSpan.FromMinutes(50);
 
@@ -158,8 +158,8 @@ namespace mySerialPort
         private void dateButtonRegul(bool znak)
         {
             var timeOffset = GetInterval();
-            
-           if (!znak)
+
+            if (!znak)
             {
                 dateTimeStart = dateTimeStart.AddSeconds(-(double)timeOffset.TotalSeconds);
             }
@@ -215,20 +215,20 @@ namespace mySerialPort
 
         private void button_DiapTimeUp(object sender, EventArgs e)
         {
-            if(diapTime>DiapTime.t1c)
-            diapTime--;
-            label2.Text= diapTime.ToString();
+            if (diapTime > DiapTime.t1c)
+                diapTime--;
+            label2.Text = diapTime.ToString();
             SetInterval(dateTimeStart.ToOADate());
         }
         private void button_DiapTimeDown(object sender, EventArgs e)
         {
-            if(diapTime<DiapTime.t12h)
-            diapTime++;
+            if (diapTime < DiapTime.t12h)
+                diapTime++;
             label2.Text = diapTime.ToString();
             SetInterval(dateTimeStart.ToOADate());
         }
 
-       
+
         private void chart1_KeyUp(object sender, KeyEventArgs e)
         {
             if (diapTime > DiapTime.t1c)
@@ -239,7 +239,7 @@ namespace mySerialPort
 
         private void chart1_DoubleClick(object sender, EventArgs e)
         {
-           
+
         }
 
         private void chart1_Click(object sender, EventArgs e)

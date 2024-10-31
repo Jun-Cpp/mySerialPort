@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace mySerialPort
+namespace mySerialPort.myForms
 {
     public partial class Form6_DateSet : Form
     {
@@ -35,19 +29,19 @@ namespace mySerialPort
             dateStop = DateTime.MaxValue;
         }
 
-        
+
         private async Task OpenVA()
         {
             dateStart = dateTimePicker1.Value;
             dateStop = dateTimePicker2.Value;
-            await  form2.openVAinDate(dateStart, dateStop);
+            await form2.openVAinDate(dateStart, dateStop);
         }
 
-   
+
 
         private async void Form6_DateSet_FormClosed(object sender, FormClosedEventArgs e)
         {
-           await OpenVA();
+            await OpenVA();
         }
     }
 }

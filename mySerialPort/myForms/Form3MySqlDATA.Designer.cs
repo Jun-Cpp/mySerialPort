@@ -1,4 +1,4 @@
-﻿namespace mySerialPort
+﻿namespace mySerialPort.myForms
 {
     partial class Form3MySqlDATA
     {

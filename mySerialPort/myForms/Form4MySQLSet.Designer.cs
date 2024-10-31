@@ -1,4 +1,5 @@
-﻿namespace mySerialPort
+﻿namespace mySerialPort.myForms
+
 {
     partial class Form4MySQLSet
     {

@@ -1,4 +1,4 @@
-﻿namespace mySerialPort
+﻿namespace mySerialPort.myForms
 {
     partial class Form1ComSet
     {
@@ -349,7 +349,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "COM Port терминал";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Form1ComSet_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);

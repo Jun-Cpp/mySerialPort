@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using mySerialPort.myForms;
 
 
-namespace mySerialPort
+namespace mySerialPort.myClass
 {
     public class BuffDataForm5
     {
@@ -13,12 +14,12 @@ namespace mySerialPort
             public DateTime buffDateTime { set; get; }
         }
 
-        private Queue <DataForm5> buffData;
+        private Queue<DataForm5> buffData;
         private DataForm5 dataForm;
 
         public BuffDataForm5()
         {
-         buffData = new Queue <DataForm5>();
+            buffData = new Queue<DataForm5>();
         }
 
         public void Push(double varI, double varU, DateTime dateTime)
@@ -34,7 +35,7 @@ namespace mySerialPort
         {
             foreach (var item in buffData)
             {
-             form5Grafika.Push(item.buffDataI, item.buffDataU, item.buffDateTime);
+                form5Grafika.Push(item.buffDataI, item.buffDataU, item.buffDateTime);
             }
         }
 

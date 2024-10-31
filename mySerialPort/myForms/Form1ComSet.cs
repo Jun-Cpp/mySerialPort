@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Drawing;
+using System.IO.Ports;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO.Ports;
+using mySerialPort.myClass;
 
-namespace mySerialPort
+
+namespace mySerialPort.myForms
 {
     public partial class Form1ComSet : Form
     {
@@ -13,24 +15,40 @@ namespace mySerialPort
         string dataIN;
         public BDmySQL _bdmySql = new BDmySQL();
 
-        public Form2ComSendIn   newForm;
-        public Form4MySQLSet    mySqlSetting;
+        public Form2ComSendIn newForm;
+        private Button button1;
+        public Form4MySQLSet mySqlSetting;
+
+
+        //private void InitializeComponent()
+        //{
+        //    this.SuspendLayout();
+        //    // 
+        //    // Form1ComSet
+        //    // 
+        //    this.ClientSize = new System.Drawing.Size(284, 261);
+        //    this.Name = "Form1ComSet";
+        //    this.Load += new System.EventHandler(this.Form1ComSet_Load);
+        //    this.ResumeLayout(false);
+
+        //}
+
 
         public Form1ComSet()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form1ComSet_Load(object sender, EventArgs e)
         {
-            
+        
             this.Location = new Point(this.Location.X - 318, this.Location.Y);
 
             string[] ports = SerialPort.GetPortNames();
             cBoxCOMPORT.Items.AddRange(ports);
-            chBoxDtrEnable.Checked=false;
+            chBoxDtrEnable.Checked = false;
             serialPort.DtrEnable = false;
-            chBoxRtsEnable.Checked=false;
+            chBoxRtsEnable.Checked = false;
             serialPort.RtsEnable = false;
 
             chBoxWriteLine.Checked = false;
@@ -41,7 +59,7 @@ namespace mySerialPort
             _bdmySql.UpdateUserData(_usRegData);
             ComPortOpen();
         }
-        
+
         public void ComPortClose()
         {
             if (serialPort.IsOpen)
@@ -52,11 +70,11 @@ namespace mySerialPort
                 cBoxDATABITS.Enabled = true;
                 cBoxPARITYBITS.Enabled = true;
                 cBoxSTOPBITS.Enabled = true;
-           
+
                 btnOpen.Enabled = true;
             }
         }
-      
+
         //  ---------------------------------------------------
         //  ----------------------   Отправка данных -----------------------------
         public async Task sendDataEnter(string str)
@@ -78,7 +96,7 @@ namespace mySerialPort
                 await serialPort.BaseStream.FlushAsync();
             }
         }
-       
+
         //  ---------------------------------------------------
         //  ----------------------   Получение данных -----------------------------
 
@@ -88,26 +106,26 @@ namespace mySerialPort
 
             if (newForm.saveMySQLToolStripMenuItem.Checked == true)
             {
-               await  _bdmySql.SaveDataToMySqlDataBase(dataIN, false);
+                await _bdmySql.SaveDataToMySqlDataBase(dataIN, false);
             }
 
-         this.Invoke(new EventHandler(ShowData));
-        
+            this.Invoke(new EventHandler(ShowData));
+
         }
 
         //  ---------------------------------------------------
-        private  void ShowData(object sender, EventArgs e)
-         {
+        private void ShowData(object sender, EventArgs e)
+        {
             int dataINLength = dataIN.Length;
             newForm.FormUpdate(dataIN.ToString());
-         }
+        }
 
         private void cOMОткрытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _bdmySql.UpdateUserData(_usRegData);
             ComPortOpen();
         }
-        
+
         private void ComPortOpen()
         {
             try
@@ -136,8 +154,8 @@ namespace mySerialPort
                 btnOpen.Enabled = false;
                 chBoxWriteLine.Checked = true;
             }
-             newForm = new Form2ComSendIn(this, _bdmySql);
-             newForm.Show();
+            newForm = new Form2ComSendIn(this, _bdmySql);
+            newForm.Show();
         }
 
         private void cOMЗакрытьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -178,11 +196,11 @@ namespace mySerialPort
 
         private void mySQLSETToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(cBoxCOMPORT.Text!="")
+            if (cBoxCOMPORT.Text != "")
             {
                 if (mySqlSetting == null)
                 {
-                    mySqlSetting = new Form4MySQLSet(_usRegData , _bdmySql);
+                    mySqlSetting = new Form4MySQLSet(_usRegData, _bdmySql);
                     mySqlSetting.FormClosing += onMySqlSettingClosed;
                 }
                 mySqlSetting.Show();
@@ -208,5 +226,9 @@ namespace mySerialPort
         {
             _usRegData.TableLH = cBoxCOMPORT.Text;
         }
+
+      
+
+      
     }
 }

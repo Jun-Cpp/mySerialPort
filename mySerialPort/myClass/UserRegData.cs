@@ -1,5 +1,5 @@
 ﻿
-namespace mySerialPort
+namespace mySerialPort.myClass
 {
     public class UserRegData
     {
@@ -9,7 +9,7 @@ namespace mySerialPort
         public int PortLH;
         public string DatabaseLH;
         public string TableLH;
-        
+
         public UserRegData()
         {
             ServerLH = "localhost";

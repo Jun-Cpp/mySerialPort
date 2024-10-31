@@ -3,10 +3,11 @@ using System.Data;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using mySerialPort.myClass;
 
 
 
-namespace mySerialPort
+namespace mySerialPort.myForms
 {
     public partial class Form3MySqlDATA : Form
     {
@@ -18,26 +19,26 @@ namespace mySerialPort
         {
             myDataSet = new DataSet();
             myDataSet = await _bdmySql.ReadDataToMySqlDataBase();
-            
+
             dataGridView1.DataSource = myDataSet;
             dataGridView1.DataMember = "Serial Data";
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView1.Refresh();
         }
 
-        public Form3MySqlDATA(string  str, BDmySQL bdmySQL)
+        public Form3MySqlDATA(string str, BDmySQL bdmySQL)
         {
             InitializeComponent();
             this.Text += " " + str;
             _bdmySql = bdmySQL;
         }
 
-        private async void Form3_Load (object sender, EventArgs e)
+        private async void Form3_Load(object sender, EventArgs e)
         {
             this.Location = new Point(this.Location.X + 362, this.Location.Y);
 
-           await RefreshAndShowDataOnDataGidView();
+            await RefreshAndShowDataOnDataGidView();
         }
-  
+
     }
 }

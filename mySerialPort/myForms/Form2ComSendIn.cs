@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Data;
 using System.IO;
 using System.Text.RegularExpressions;
-using System.Data;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using mySerialPort.myClass;
 
 
 
 
-namespace mySerialPort
+namespace mySerialPort.myForms
 {
     public partial class Form2ComSendIn : Form
     {
@@ -22,7 +23,7 @@ namespace mySerialPort
         public BuffDataForm5 buffDataForm5;
 
         public Form6_DateSet form6_DateSet;
-       
+
         public Form1ComSet form1;
         public Form3MySqlDATA objForm3;
 
@@ -42,10 +43,10 @@ namespace mySerialPort
         {
             form1.Visible = false;
             saveMySQLToolStripMenuItem.Checked = false;
-            this.Text = "Терминал "+ form1.ComPortName();
+            this.Text = "Терминал " + form1.ComPortName();
 
-            buffDataForm5=new BuffDataForm5();
-          
+            buffDataForm5 = new BuffDataForm5();
+
         }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
@@ -53,13 +54,13 @@ namespace mySerialPort
             form1.Visible = true;
             form1.ComPortClose();
         }
-        
+
         public Task FormUpdate(string str)
         {
             inDataForm5(str, DateTime.Now, DateTime.MinValue, DateTime.MaxValue);
-           
+
             tBoxDataIN.Text += str;
-          //  onForm3();
+            //  onForm3();
             try
             {
                 streamWriter = new StreamWriter(pathFile, true);
@@ -70,7 +71,7 @@ namespace mySerialPort
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-             return  onForm3();
+            return onForm3();
         }
 
         private void comPortToolStripMenuItem_Click(object sender, EventArgs e)
@@ -94,20 +95,20 @@ namespace mySerialPort
 
         private async void btnSend_Click(object sender, EventArgs e)
         {
-           await sendData();
+            await sendData();
         }
 
         private async void tBoxDataOut_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-              await  sendData();
+                await sendData();
             }
         }
 
         private async Task sendData()
         {
-           await form1.sendDataEnter(tBoxDataOut.Text);
+            await form1.sendDataEnter(tBoxDataOut.Text);
             await onForm3();
             tBoxDataOut.Text = "";
         }
@@ -116,11 +117,11 @@ namespace mySerialPort
 
         private async void showDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
-          await onForm3();
-          objForm3.Show();
+            await onForm3();
+            objForm3.Show();
         }
 
-        private void inDataForm5(string str, DateTime _dateTime, DateTime dateStart,DateTime dateStop )
+        private void inDataForm5(string str, DateTime _dateTime, DateTime dateStart, DateTime dateStop)
         {
             double varI = 0;
             double varU = 0;
@@ -140,7 +141,7 @@ namespace mySerialPort
                 if (form5Grafika != null) form5Grafika.Push(varI, varU, dateTime);
             }
 
-            
+
         }
 
         //----------------------- Парсинг 2 ----------------------------------
@@ -160,8 +161,8 @@ namespace mySerialPort
             }
             try
             {
-                 varI = Convert.ToDouble(match.Groups[I].Value.Replace(',', '.'));
-                 varU = Convert.ToDouble(match.Groups[U].Value.Replace(',', '.'));
+                varI = Convert.ToDouble(match.Groups[I].Value.Replace(',', '.'));
+                varU = Convert.ToDouble(match.Groups[U].Value.Replace(',', '.'));
             }
             catch (Exception ex)
             {
@@ -180,7 +181,7 @@ namespace mySerialPort
             {
                 if (str[i] == outStr || str[i] < '0' || str[i] > '9')
                 {
-                    if (str[i] != ',' ) break;
+                    if (str[i] != ',') break;
                 }
                 strData += str[i];
             }
@@ -202,8 +203,8 @@ namespace mySerialPort
         {
             int indexOfData = str.LastIndexOf("DT*") + 3;
             string strData = "";
-            DateTime dateTime= _dateTime;
-           
+            DateTime dateTime = _dateTime;
+
             for (int i = indexOfData; i < str.Length; i++)
             {
                 if (str[i] < '0' || str[i] > '9')
@@ -228,8 +229,8 @@ namespace mySerialPort
 
         private void onForm5Closed(object sender, FormClosingEventArgs e)
         {
-                form5Grafika.FormClosing -= onForm5Closed;
-                form5Grafika = null;
+            form5Grafika.FormClosing -= onForm5Closed;
+            form5Grafika = null;
         }
 
         private async Task onForm3()
@@ -239,7 +240,7 @@ namespace mySerialPort
                 objForm3 = new Form3MySqlDATA(form1.ComPortName(), _bdmySql);
                 objForm3.FormClosing += onForm3Closed;
             }
-           await objForm3.RefreshAndShowDataOnDataGidView();
+            await objForm3.RefreshAndShowDataOnDataGidView();
         }
 
         private void onForm3Closed(object sender, FormClosingEventArgs e)
@@ -264,15 +265,15 @@ namespace mySerialPort
         private async void timer1_Tick(object sender, EventArgs e)
         {
             Random random = new Random();
-              
-                    try
-                    {
-                       await  form1.sendDataEnter(Convert.ToString($"I={((random.NextDouble()) * 20).ToString("0.##") }A  U={((random.NextDouble()) * 20).ToString("0.##")}V \n"));
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+
+            try
+            {
+                await form1.sendDataEnter(Convert.ToString($"I={((random.NextDouble()) * 20).ToString("0.##")}A  U={((random.NextDouble()) * 20).ToString("0.##")}V \n"));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
@@ -281,7 +282,7 @@ namespace mySerialPort
             timer1.Enabled = checkBox1.Checked;
         }
 
-        private  void openInMySQLBDToolStripMenuItem_Click(object sender, EventArgs e)
+        private void openInMySQLBDToolStripMenuItem_Click(object sender, EventArgs e)
         {
             form6_DateSet = new Form6_DateSet(this);
             form6_DateSet.Show();
@@ -315,5 +316,7 @@ namespace mySerialPort
             }
             form5Grafika.Show();
         }
+
+       
     }
 }

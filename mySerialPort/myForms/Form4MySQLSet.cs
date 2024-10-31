@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
+using mySerialPort.myClass;
 
-namespace mySerialPort
+namespace mySerialPort.myForms
 {
     public partial class Form4MySQLSet : Form
     {
@@ -23,7 +24,7 @@ namespace mySerialPort
             textBox5.Text = _userRegData.DatabaseLH;
             textBox6.Text = _userRegData.TableLH;
         }
- 
+
         private async void Create_Click(object sender, EventArgs e)
         {
             _userRegData.ServerLH = textBox1.Text;
@@ -33,9 +34,9 @@ namespace mySerialPort
             _userRegData.DatabaseLH = textBox5.Text;
             _userRegData.TableLH = textBox6.Text;
 
-           _bDmySQL.UpdateUserData(_userRegData);
-           await _bDmySQL.CreateTableMysql();
+            _bDmySQL.UpdateUserData(_userRegData);
+            await _bDmySQL.CreateTableMysql();
         }
     }
-      
+
 }
