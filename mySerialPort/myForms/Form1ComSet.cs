@@ -3,10 +3,10 @@ using System.Drawing;
 using System.IO.Ports;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using mySerialPort.myForms;
 using mySerialPort.myClass;
 
-
-namespace mySerialPort.myForms
+namespace mySerialPort
 {
     public partial class Form1ComSet : Form
     {
@@ -16,22 +16,8 @@ namespace mySerialPort.myForms
         public BDmySQL _bdmySql = new BDmySQL();
 
         public Form2ComSendIn newForm;
-        private Button button1;
+       
         public Form4MySQLSet mySqlSetting;
-
-
-        //private void InitializeComponent()
-        //{
-        //    this.SuspendLayout();
-        //    // 
-        //    // Form1ComSet
-        //    // 
-        //    this.ClientSize = new System.Drawing.Size(284, 261);
-        //    this.Name = "Form1ComSet";
-        //    this.Load += new System.EventHandler(this.Form1ComSet_Load);
-        //    this.ResumeLayout(false);
-
-        //}
 
 
         public Form1ComSet()
@@ -41,7 +27,7 @@ namespace mySerialPort.myForms
 
         private void Form1ComSet_Load(object sender, EventArgs e)
         {
-        
+
             this.Location = new Point(this.Location.X - 318, this.Location.Y);
 
             string[] ports = SerialPort.GetPortNames();
@@ -227,8 +213,8 @@ namespace mySerialPort.myForms
             _usRegData.TableLH = cBoxCOMPORT.Text;
         }
 
-      
 
-      
+
+
     }
 }

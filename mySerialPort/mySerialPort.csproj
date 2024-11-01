@@ -120,24 +120,24 @@
     <Compile Include="myClass\BDmySQL.cs" />
     <Compile Include="myClass\BuffDataForm5.cs" />
     <Compile Include="myClass\UserRegData.cs" />
-    <Compile Include="myForms\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="myForms\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="myForms\Form1ComSet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myForms\Form1ComSet.Designer.cs" />
+    <Compile Include="myForms\Form1ComSet.Designer.cs">
+      <DependentUpon>Form1ComSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="myForms\Form2ComSendIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myForms\Form2ComSendIn.Designer.cs" />
+    <Compile Include="myForms\Form2ComSendIn.Designer.cs">
+      <DependentUpon>Form2ComSendIn.cs</DependentUpon>
+    </Compile>
     <Compile Include="myForms\Form3MySqlDATA.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myForms\Form3MySqlDATA.Designer.cs" />
+    <Compile Include="myForms\Form3MySqlDATA.Designer.cs">
+      <DependentUpon>Form3MySqlDATA.cs</DependentUpon>
+    </Compile>
     <Compile Include="myForms\Form4MySQLSet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,12 +152,15 @@
     <Compile Include="myForms\Form6_DateSet.Designer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="myForms\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="myForms\Form1ComSet.resx">
+      <DependentUpon>Form1ComSet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="myForms\Form1ComSet.resx" />
-    <EmbeddedResource Include="myForms\Form2ComSendIn.resx" />
-    <EmbeddedResource Include="myForms\Form3MySqlDATA.resx" />
+    <EmbeddedResource Include="myForms\Form2ComSendIn.resx">
+      <DependentUpon>Form2ComSendIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myForms\Form3MySqlDATA.resx">
+      <DependentUpon>Form3MySqlDATA.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="myForms\Form4MySQLSet.resx" />
     <EmbeddedResource Include="myForms\Form5Grafika.resx" />
     <EmbeddedResource Include="myForms\Form6_DateSet.resx" />

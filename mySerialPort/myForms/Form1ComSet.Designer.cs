@@ -1,4 +1,4 @@
-﻿namespace mySerialPort.myForms
+﻿namespace mySerialPort
 {
     partial class Form1ComSet
     {
@@ -304,28 +304,28 @@
             // mySQLSETToolStripMenuItem
             // 
             this.mySQLSETToolStripMenuItem.Name = "mySQLSETToolStripMenuItem";
-            this.mySQLSETToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mySQLSETToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.mySQLSETToolStripMenuItem.Text = "MySQL SET";
             this.mySQLSETToolStripMenuItem.Click += new System.EventHandler(this.mySQLSETToolStripMenuItem_Click);
             // 
             // cOMОткрытьToolStripMenuItem
             // 
             this.cOMОткрытьToolStripMenuItem.Name = "cOMОткрытьToolStripMenuItem";
-            this.cOMОткрытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cOMОткрытьToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.cOMОткрытьToolStripMenuItem.Text = "COM открыть";
             this.cOMОткрытьToolStripMenuItem.Click += new System.EventHandler(this.cOMОткрытьToolStripMenuItem_Click);
             // 
             // cOMЗакрытьToolStripMenuItem
             // 
             this.cOMЗакрытьToolStripMenuItem.Name = "cOMЗакрытьToolStripMenuItem";
-            this.cOMЗакрытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cOMЗакрытьToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.cOMЗакрытьToolStripMenuItem.Text = "COM Закрыть";
             this.cOMЗакрытьToolStripMenuItem.Click += new System.EventHandler(this.cOMЗакрытьToolStripMenuItem_Click);
             // 
             // очиститьToolStripMenuItem
             // 
             this.очиститьToolStripMenuItem.Name = "очиститьToolStripMenuItem";
-            this.очиститьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.очиститьToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.очиститьToolStripMenuItem.Text = "Очистить";
             // 
             // инфаToolStripMenuItem

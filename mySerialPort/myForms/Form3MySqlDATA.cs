@@ -7,7 +7,7 @@ using mySerialPort.myClass;
 
 
 
-namespace mySerialPort.myForms
+namespace mySerialPort
 {
     public partial class Form3MySqlDATA : Form
     {

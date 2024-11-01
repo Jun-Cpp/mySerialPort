@@ -5,11 +5,12 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using mySerialPort.myClass;
+using mySerialPort.myForms;
 
 
 
 
-namespace mySerialPort.myForms
+namespace mySerialPort
 {
     public partial class Form2ComSendIn : Form
     {
@@ -317,6 +318,6 @@ namespace mySerialPort.myForms
             form5Grafika.Show();
         }
 
-       
+
     }
 }
