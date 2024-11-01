@@ -1,6 +1,4 @@
-﻿using mySerialPort.myClass;
-using mySerialPort.myForms;
-
+﻿
 namespace mySerialPort
 {
     partial class Form2ComSendIn

@@ -3,8 +3,7 @@ using System.Drawing;
 using System.IO.Ports;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using mySerialPort.myForms;
-using mySerialPort.myClass;
+
 
 namespace mySerialPort
 {

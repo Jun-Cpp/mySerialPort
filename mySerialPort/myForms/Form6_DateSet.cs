@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace mySerialPort.myForms
+namespace mySerialPort
 {
     public partial class Form6_DateSet : Form
     {

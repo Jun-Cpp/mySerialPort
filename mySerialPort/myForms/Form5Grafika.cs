@@ -2,7 +2,8 @@
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
-namespace mySerialPort.myForms
+
+namespace mySerialPort
 {
     public partial class Form5Grafika : Form
     {

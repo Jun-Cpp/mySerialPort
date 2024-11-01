@@ -1,5 +1,5 @@
 ﻿
-namespace mySerialPort.myClass
+namespace mySerialPort
 {
     public class UserRegData
     {

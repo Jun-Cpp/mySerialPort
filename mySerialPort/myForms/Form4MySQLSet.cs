@@ -1,8 +1,9 @@
-﻿using System;
+﻿
+using System;
 using System.Windows.Forms;
-using mySerialPort.myClass;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace mySerialPort.myForms
+namespace mySerialPort
 {
     public partial class Form4MySQLSet : Form
     {

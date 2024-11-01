@@ -1,4 +1,4 @@
-﻿namespace mySerialPort.myForms
+﻿namespace mySerialPort
 {
     partial class Form6_DateSet
     {

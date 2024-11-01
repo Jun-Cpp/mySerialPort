@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using mySerialPort.myForms;
 
 
-namespace mySerialPort.myClass
+
+namespace mySerialPort
 {
     public class BuffDataForm5
     {
