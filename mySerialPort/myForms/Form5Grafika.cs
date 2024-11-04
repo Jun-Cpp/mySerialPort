@@ -9,6 +9,7 @@ namespace mySerialPort
     {
         private readonly string _name;
         private DateTime dateTimeStart;
+        private Form2ComSendIn form2Com;
 
         private enum DiapTime
         {
@@ -26,11 +27,12 @@ namespace mySerialPort
         }
         DiapTime diapTime = new DiapTime();
 
-        public Form5Grafika(string str)
+        public Form5Grafika(string str, Form2ComSendIn form2Com)
         {
             InitializeComponent();
             _name = "VoltAmpetr is " + str;
             dateTimeStart = DateTime.Now;
+            this.form2Com = form2Com;
         }
 
         public void Push(double varI, double varU, DateTime dateTime)
@@ -63,11 +65,13 @@ namespace mySerialPort
 
             diapTime = DiapTime.t1c;
             label2.Text = diapTime.ToString();
+
+            form2Com.Visible = false;
         }
 
         private void Form5Grafika_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            form2Com.Visible = true;
         }
 
         private void SetInterval(double startDate)
@@ -246,6 +250,11 @@ namespace mySerialPort
         private void chart1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void терминалToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            form2Com.Visible = true;
         }
     }
 }

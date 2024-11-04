@@ -43,17 +43,27 @@ namespace mySerialPort
         private void Form2_Load(object sender, EventArgs e)
         {
             form1.Visible = false;
+         
             saveMySQLToolStripMenuItem.Checked = false;
             this.Text = "Терминал " + form1.ComPortName();
 
             buffDataForm5 = new BuffDataForm5();
 
+            if (form5Grafika == null)
+            {
+                form5Grafika = new Form5Grafika(form1.ComPortName(), this);
+                form5Grafika.FormClosing += onForm5Closed;
+                buffDataForm5.CopyTo(form5Grafika);
+            }
+            form5Grafika.Show();
+           
         }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
             form1.Visible = true;
             form1.ComPortClose();
+            form5Grafika.Close();
         }
 
         public Task FormUpdate(string str)
@@ -255,7 +265,7 @@ namespace mySerialPort
             //form5Grafika ??= new Form5Grafika(form1.ComPortName()); для 8 С#
             if (form5Grafika == null)
             {
-                form5Grafika = new Form5Grafika(form1.ComPortName());
+                form5Grafika = new Form5Grafika(form1.ComPortName(), this);
                 form5Grafika.FormClosing += onForm5Closed;
                 buffDataForm5.CopyTo(form5Grafika);
             }
@@ -311,13 +321,16 @@ namespace mySerialPort
             }
             if (form5Grafika == null)
             {
-                form5Grafika = new Form5Grafika(form1.ComPortName());
+                form5Grafika = new Form5Grafika(form1.ComPortName(), this);
                 form5Grafika.FormClosing += onForm5Closed;
                 buffDataForm5.CopyTo(form5Grafika);
             }
             form5Grafika.Show();
         }
 
-
+        private void скрытьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+        }
     }
 }

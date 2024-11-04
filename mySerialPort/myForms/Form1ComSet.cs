@@ -141,6 +141,7 @@ namespace mySerialPort
             }
             newForm = new Form2ComSendIn(this, _bdmySql);
             newForm.Show();
+            newForm.Visible = false;
         }
 
         private void cOMЗакрытьToolStripMenuItem_Click(object sender, EventArgs e)
